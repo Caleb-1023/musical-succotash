@@ -2,24 +2,27 @@ type ImageContextState = {
     forged: string;
     percentage: string;
     image: string | undefined;
+    display: any
   };
 
-const Result = ({forged, percentage, image}:ImageContextState) => {
+const Result = ({forged, percentage, image, display}:ImageContextState) => {
     // console.log(localStorage.getItem('image'))
 
     // console.log(percentage)
 
   return (
     <div>
-        <div className="w-screen h-screen rounded-md mx-auto p-20">
+        <div className="w-screen h-screen relative rounded-md mx-auto p-20">
             {image ? <div className="flex flex-row items-center w-full h-full justify-center space-x-10">
                 <div className="w-1/2">
                     <img src={image} alt="" className="w-3/4" />
                 </div>
-                <div className="w-1/2 flex flex-col text-5xl font-bold">
+                <div className="w-1/2 flex flex-col text-4xl font-bold">
                     <p className="mb-10">This image is <span className="text-[#9A9A9A]">{forged}</span></p>
-                    <p className="mb-10">Probability of Image Forged - <span className="text-[#9A9A9A]">{String(parseFloat(percentage) * 100)}</span></p>
-                    <p className="mb-10">Type - <span className="text-[#9A9A9A]">Image splicing</span></p>
+                    <p className="mb-10">Probability - <span className="text-[#9A9A9A]">{String(parseFloat(percentage) * 100)}</span></p>
+                    {forged === 'Forged' ? <p className="mb-10">Forgery Class - <span className="text-[#9A9A9A]">Image splicing</span></p>
+                    :
+                    null}
                 </div>
             </div>
             :
@@ -35,6 +38,7 @@ const Result = ({forged, percentage, image}:ImageContextState) => {
                     </div>
                 </div>
             </div>}
+        <svg width="40px" height="40px" onClick={display} className="absolute right-20 top-20" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"/></svg>
         </div>
     </div>
   )
