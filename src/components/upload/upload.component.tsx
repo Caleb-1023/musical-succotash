@@ -17,7 +17,7 @@ const Upload = () => {
         setShowResult(true)
         const formData = new FormData()
         formData.append('image', file)
-        const response = await axios.post("https://aliquot.serveo.net/predict", formData ,{
+        const response = await axios.post("https://fore.serveo.net/predict", formData ,{
             headers: {
               'Content-Type': 'multipart/form-data',
               "Access-Control-Allow-Origin": "*" ,
