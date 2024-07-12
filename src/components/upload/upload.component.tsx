@@ -17,7 +17,7 @@ const Upload = () => {
         setShowResult(true)
         const formData = new FormData()
         formData.append('image', file)
-        const response = await axios.post("https://api.image-forgery-detection.live/predict", formData ,{
+        const response = await axios.post("https://api-pg.productkitchen.tech/predict", formData ,{
             headers: {
               'Content-Type': 'multipart/form-data',
               "Access-Control-Allow-Origin": "*" ,
